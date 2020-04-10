@@ -1,0 +1,60 @@
+Given a string s consists of upper/lower-case alphabets and empty space characters ' ', return the length of last word (last word means the last appearing word if we loop from left to right) in the string.
+
+If the last word does not exist, return 0.
+
+Note: A word is defined as a maximal substring consisting of non-space characters only.
+
+Example:
+
+Input: "Hello World"
+Output: 5
+
+class Solution {
+    public int lengthOfLastWord(String s) {
+        if(s==null || s.length() == 0)
+        return 0;
+        
+        int len = 0; 
+
+        String x = s.trim(); 
+  
+        boolean char_flag = false; 
+        for (int i = x.length() - 1; i >= 0; i--) { 
+            if (Character.isLetter(x.charAt(i))) { 
+                // Once the first character from last 
+                // is encountered, set char_flag to true. 
+                char_flag = true; 
+                len++; 
+            } 
+            else { 
+                // When the first space after the characters 
+                // (from the last) is encountered, return the 
+                // length of the last word 
+                if (char_flag == true) 
+                    return len; 
+            } 
+        } 
+        return len;
+
+    }
+}
+
+class Solution {
+    public int lengthOfLastWord(String s) {
+        if(s==null || s.length() == 0)
+        return 0;
+        
+        int len = 0; 
+
+        String x = s.trim(); 
+  
+        for (int i = 0; i < x.length(); i++) { 
+            if (x.charAt(i) == ' ') 
+                len = 0; 
+            else
+                len++; 
+        } 
+  
+        return len; 
+    }
+}
