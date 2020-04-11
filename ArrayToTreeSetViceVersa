@@ -1,0 +1,85 @@
+import java.util.*; 
+
+class Playground {
+
+    private static int findKthSmallestElement(int[] nums, int k) {
+
+        TreeSet<Integer> numSet = new TreeSet<>();
+        // Array to Treeset
+        for(int num: nums) {
+            numSet.add(num);
+        }
+        // Treeset to array
+        Integer[] numArray = numSet.toArray(new Integer[numSet.size()]);
+        
+
+        return numArray[k-1];
+    }
+    
+    public static void main(String[ ] args) {
+        System.out.println("Find Kth Smallest Element in unsorted array");
+        int[] nums = new int[]{12,3,5,7,19,3,4};
+        int k = 2;
+
+        System.out.print(findKthSmallestElement(nums, k));
+    }
+}
+
+
+import java.util.*; 
+
+class Playground {
+
+    private static LinkedHashSet<Integer> findKthSmallestElement(int[] nums, int k) {
+
+        // Array to LinkedHashSet
+        LinkedHashSet<Integer> numSet = new LinkedHashSet<>();
+        
+        for(int num: nums) {
+            numSet.add(num);
+        }
+        
+        int[] numArray = numSet.toArray();
+        
+        System.out.print(Arrays.toString(numArray));
+        return numSet;
+    }
+    
+    public static void main(String[ ] args) {
+        System.out.println("Find Kth Smallest Element in unsorted array");
+        int[] nums = new int[]{12,3,5,7,19,3,4};
+        int k = 2;
+
+        System.out.print(findKthSmallestElement(nums, k));
+    }
+}
+
+import java.util.*; 
+
+class Playground {
+
+    private static Integer[] findKthSmallestElement(int[] nums, int k) {
+
+        LinkedHashSet<Integer> numSet = new LinkedHashSet<>();
+        
+        for(int num: nums) {
+            numSet.add(num);
+        }
+        
+        Integer[] numArray = numSet.toArray(new Integer[numSet.size()]);
+
+        return numArray;
+    }
+    
+    public static void main(String[ ] args) {
+        System.out.println("Find Kth Smallest Element in unsorted array");
+        int[] nums = new int[]{12,3,5,7,19,3,4,4,3,4,5};
+        int k = 2;
+
+        Integer[] array = findKthSmallestElement(nums, k);
+        
+        Arrays.sort(array, Collections.reverseOrder());
+                
+        System.out.print(Arrays.toString(array));
+    }
+}
