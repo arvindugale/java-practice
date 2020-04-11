@@ -70,3 +70,25 @@ class Playground {
     }
     
 }
+
+Javascript Solution
+function insertStarsDashes(str) {
+  var i = 0
+  while(i < str.length) {
+    const current = str[i]
+    const next = str[i + 1]
+    // Check if current and next numbers are both even
+    if (current % 2 === 0 && next % 2 === 0) {
+      // Slice the string into two halves, insert the star
+      str = str.slice(0, i+1) + '*' + str.slice(i+1, str.length)
+    // If not, check if they are both odd and insert a dash
+    } else if (current % 2 === 1 && next % 2 === 1) {
+      str = str.slice(0, i+1) + '-' + str.slice(i+1, str.length)
+    }
+    i++
+  }
+  return str
+}
+
+console.log(insertStarsDashes('1122334455767889'));
+// 1-12*23-34*45-5-7678*89
