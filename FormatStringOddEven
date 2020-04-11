@@ -1,0 +1,72 @@
+import java.util.*; 
+
+class Playground {
+
+    private static String formatString(String s) {
+        String str = s.replaceAll("([13579])([13579])", "$1-$2");
+        String result = str.replaceAll("([2468])([2468])", "$1*$2");
+        return result;
+    }
+    
+    public static void main(String[ ] args) {
+        System.out.println("23243435779434468");
+        
+        String s = "23243435779434468";
+                
+        System.out.println(formatString(s));
+    }
+}
+
+import java.util.*; 
+
+class Playground {
+    
+        // grep the last digit from the string and check if it's odd/even
+    public static boolean isOdd(String x) {
+        if (x.length() > 1) {
+            if (x.substring(x.length()-1).equals("-")) {
+                x = x.substring(x.length()-3, x.length()-2);
+            } else {
+                x = x.substring(x.length() - 1);
+            }
+        }
+        return Integer.parseInt(x) % 2 == 1;
+    }
+    
+     public static boolean isEven(String x) {
+        if (x.length() > 1) {
+            if (x.substring(x.length()-1).equals("-")) {
+                x = x.substring(x.length()-3, x.length()-2);
+            } else {
+                x = x.substring(x.length() - 1);
+            }
+        }
+        return Integer.parseInt(x) % 2 == 0;
+    }
+
+    private static String formatString(String str) {
+       /* Insert * if 2 even together. Insert - if 2 odds together */
+        List<String> lst = Arrays.asList(str.split(""));
+        String res = lst.stream().reduce((a,b) -> {
+            if (isOdd(a) && isOdd(b)) {
+                return a + "-" + b;
+            } else if (isEven(a) && isEven(b)) {
+                return a + "*" + b;
+            } else {
+                return a + b;
+            }
+        }).get();
+        // System.out.println(res);
+        
+        return res;
+    }
+    
+    public static void main(String[ ] args) {
+        System.out.println("232434357794348");
+        
+        String s = "232434357794348";
+                
+        System.out.println(formatString(s));
+    }
+    
+}
